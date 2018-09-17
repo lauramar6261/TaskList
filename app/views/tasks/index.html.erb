@@ -1,0 +1,18 @@
+<h1>TASKLIST</h1>
+<section>
+<nav>
+  <p><strong> Add Task </strong></p>
+  <p><strong> All Tasks </strong></p>
+</nav>
+<ol>
+<p>YOUR TASKS</p>
+<% @tasks.each do |task| %>
+    <!-- <li><%= (task[:name] + ":" + task[:status])%></li> -->
+    <li><strong><%= task[:name]%></strong></li>
+    <p>Mark <%=task[:status]%> | Edit | Delete </p>
+<% end %>
+</ol>
+</section>
+<footer>
+  <p>copywrite 2017</p>
+</footer>

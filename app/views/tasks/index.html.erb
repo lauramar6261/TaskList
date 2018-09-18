@@ -1,16 +1,16 @@
 <h1>TASKLIST</h1>
 <section>
-<nav>
-  <p><strong> Add Task </strong></p>
-  <p><strong> All Tasks </strong></p>
-</nav>
-<ol>
-<p>YOUR TASKS</p>
-<% @tasks.each do |task| %>
+  <nav>
+    <p><strong> Add Task </strong></p>
+    <p><strong> All Tasks </strong></p>
+  </nav>
+  <ol>
+    <h2><strong>YOUR TASKS</strong></h2>
+    <% @tasks.each do |task| %>
     <li><strong><%= task.name%></strong></li>
     <p>Mark <%=task.completion_date%> | Edit | Delete </p>
-<% end %>
-</ol>
+    <% end %>
+  </ol>
 </section>
 <footer>
   <p>copywrite 2017</p>

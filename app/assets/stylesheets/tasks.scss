@@ -4,9 +4,35 @@
 section {
   display: grid;
   grid-template-areas:'nav task';
-  grid-gap: 10px;
+  grid-gap: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 footer {
+  text-align: center;
+  border-style: solid;
+  border-radius: 15px;
+  margin: 30px;
+}
+
+nav p, section ol {
+  border-style: solid;
+  border-radius: 15px;
+  padding-right: 30px;
+}
+
+nav p {
+  padding-top: 20px;
+  width: 50%;
+  text-align: center;
+  line-height: 80%;
+}
+
+section ol p:nth-child(1) {
+  text-align: center;
+}
+
+h2 {
   text-align: center;
 }

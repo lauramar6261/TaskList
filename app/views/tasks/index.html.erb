@@ -7,7 +7,8 @@
   <ol>
     <h2><strong>YOUR TASKS</strong></h2>
     <% @tasks.each do |task| %>
-    <li><strong><%= task.name%></strong></li>
+    <li><a href="/tasks/<%= task.id %>" name="<%= task.name%>"><%= task.name%></a></li>
+    <!-- <li><strong><%= task.name%></strong></li> -->
     <p>Mark <%=task.completion_date%> | Edit | Delete </p>
     <% end %>
   </ol>

@@ -7,8 +7,8 @@
 <ol>
 <p>YOUR TASKS</p>
 <% @tasks.each do |task| %>
-    <li><strong><%= task[:name]%></strong></li>
-    <p>Mark <%=task[:completion_date]%> | Edit | Delete </p>
+    <li><strong><%= task.name%></strong></li>
+    <p>Mark <%=task.completion_date%> | Edit | Delete </p>
 <% end %>
 </ol>
 </section>

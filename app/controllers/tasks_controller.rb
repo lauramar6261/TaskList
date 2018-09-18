@@ -5,14 +5,15 @@ TASKS = [
 
 class TasksController < ApplicationController
   def index
-    @tasks = TASKS
+    @tasks = Task.all.order(:completion_date)
   end
 
   def show
-    id = params[:id]
-    id = id.to_i
-    @task = TASKS.find do |task|
-      task[:id] == id
+    id = params[:id].to_i
+    @task = Task.find_by(id: id)
+
+    if @book.nil?
+      render :notfound, status: :not_found
     end
   end
 end

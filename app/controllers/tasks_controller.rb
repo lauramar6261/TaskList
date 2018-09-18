@@ -12,8 +12,9 @@ class TasksController < ApplicationController
     id = params[:id].to_i
     @task = Task.find_by(id: id)
 
-    # if @book.nil?
-    #   render :notfound, status: :not_found
-    # end
+    if @task.nil?
+      #head :not_found
+      render :notfound, status: :not_found
+    end
   end
 end

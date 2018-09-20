@@ -8,8 +8,10 @@
     <h2><strong>YOUR TASKS</strong></h2>
     <% @tasks.each do |task| %>
     <li><a href="/tasks/<%= task.id %>" name="<%= task.name%>"><%= task.name%></a></li>
-    <!-- <li><strong><%= task.name%></strong></li> -->
-    <p>Mark <%=task.completion_date%> | Edit | Delete </p>
+    <!-- task variable here is defined in the loop above
+    button makes a hidden form, and by default hidden forms have a post verd which it will be looking for that in the
+    route file, to change the verb call the method key word to change the verb to get which is what we have in our route file -->
+    <p>Mark <%=task.completion_date%> | <%= button_to "Edit", edit_task_path(task.id), method: :get %> | Delete </p>
     <% end %>
   </ol>
 </section>

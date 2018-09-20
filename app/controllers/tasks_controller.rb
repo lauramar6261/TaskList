@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Tasks.new(name: params[:task][:name], completion_date: params[:task][:completion_date]) #instantiate a new task
+    @task = Task.new(name: params[:task][:name], completion_date: params[:task][:completion_date]) #instantiate a new task
     if @task.save # save returns true if the database insert succeeds
       redirect_to root_path # go to the index so we can see the task in the list
     else # save failed :(
@@ -27,9 +27,9 @@ class TasksController < ApplicationController
     end
   end
 
+  # create blank table ### do not save!
   def new
     @task = Task.new
-    @task.save
   end
 
   def edit

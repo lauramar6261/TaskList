@@ -19,6 +19,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    # get variables that user inputed:
     @task = Task.new(name: params[:task][:name], completion_date: params[:task][:completion_date]) #instantiate a new task
     if @task.save # save returns true if the database insert succeeds
       redirect_to root_path # go to the index so we can see the task in the list
@@ -34,11 +35,6 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id].to_i)
-    if @task.save # save returns true if the database insert succeeds
-      redirect_to task_path # go to the index so we can see the task in the list
-    else # save failed :(
-      render :edit # show the new task form view again, and all past entries create an id with nill
-    end
   end
 
   def update

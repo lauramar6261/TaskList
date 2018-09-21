@@ -1,3 +1,4 @@
+# before creating a model to create data
 # TASKS = [
 #   { id: 1, name: "take out garbage", completion_date: "completed", description: "every day"},
 #   { id: 2, name: "clean room", completion_date: "completed", description: "every week"}
@@ -60,5 +61,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    task = Task.find_by(id: params[:id].to_i)
+    task.destroy
+    redirect_to root_path
   end
 end

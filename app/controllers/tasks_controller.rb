@@ -13,16 +13,21 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: id)
 
     if @task.nil?
-      #head :not_found
+      # head vs render?
+      # what is head? sends back status code
+      #head :not_found sends 404 - google looks for that
+      # render calls the notfound html, and returns a status to the browser
+      # render sends back full view - the notfound html -> user cares for that
       render :notfound, status: :not_found
     end
   end
 
   def create
-    # how does it know which id it needs to save it to? it autogenerates an id - Task.new generates new id ? or .save?
-    # get variables that user inputed:
+    # Task.new - the default HTTP verb is a post
+    # how does it know which id it needs to save it to? .save it autogenerates an id
+    # get variables that user inputed using params
     @task = Task.new(name: params[:task][:name], completion_date: params[:task][:completion_date]) #instantiate a new task
-    if @task.save # save returns true if the database insert succeeds
+    if @task.save # save returns true if the database insert succeeds #### creates an id
       redirect_to root_path # go to the index so we can see the task in the list
     else # save failed :(
       render :new # show the new task form view again, and all past entries create an id with nill
@@ -39,20 +44,19 @@ class TasksController < ApplicationController
   end
 
   def update
-    # does it know the id from the route?
-    # how do I know that the parems are keys in the page? it's the standard a hash
-    # Task.find or Task.new - is the default a post command?
-    task = Task.find_by(id: params[:id].to_i)
-    task.update(name: params[:task][:name], completion_date: params[:task][:completion_date], description: params[:task][:description])
-    redirect_to task_path
-    # update is an inhered method?
-    #@task = Task.new(id: params[:task][:id], name: params[:task][:name], completion_date: params[:task][:completion_date], description: params[:task][:description])
-    # needs to find the @task we are going to save below
-    # if @task.save # save returns true if the database insert succeeds
-    #   redirect_to task_path # go to the index so we can see the task in the list
-    # else # save failed :(
-    #   render :new
-    # end
+    # does it know the id from the route? needs to find it that's why we use find_by
+    # how do I know that the parems are keys in the page? we know the structure is a hash
+    @task = Task.find_by(id: params[:id].to_i)
+    @task.update(name: params[:task][:name], completion_date: params[:task][:completion_date], description: params[:task][:description])
+    #redirect_to task_path
+    # update is an inhered method? yes!
+    # the following statement requires @task instead of :edit because :edit looks for a @task
+    # this following if statement is not really needed because updates and saves at the same time
+    if @task.save
+       redirect_to task_path # go to the index so we can see the task in the list
+     else # save failed :(
+       render :edit # edit view looks for @task
+     end
   end
 
   def destroy

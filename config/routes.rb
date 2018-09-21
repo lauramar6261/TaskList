@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
-  root "tasks#index"
+  root "tasks#index" # this route is called root_path
 
   get '/tasks', to: 'tasks#index', as: 'tasks'
-  # order matters new must be before id
+  # order matters new must be before id because :id will match any string, it is just a place holder
   get '/tasks/new', to: 'tasks#new', as: 'new_task'
-  # the following route is used by the form? and the default of form is post
+  # the following route is used by the form? yes! it chooses this one if object doesn't have an idea to create a new object = post
   post '/tasks', to: 'tasks#create'
   #
   get '/tasks/:id/edit', to: 'tasks#edit', as: 'edit_task'
-  patch '/tasks/:id', to: 'tasks#update'
+  # the following route is used by the form if the object already exist and to check for this if it it has an id
+  patch '/tasks/:id', to: 'tasks#update' # default http verb for the form
 
-  #
   get '/tasks/:id', to: 'tasks#show', as: 'task'
-  #
+
+  # when and by who is this path called?
+  # use put to replace entire task, the form will use this path, but you have to tell it to use (action: :put) this http verb because the default for form is patch
   put '/tasks/:id', to: 'tasks#update'
-  #
+  
   # delete '/tasks/:id', to: 'tasks#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

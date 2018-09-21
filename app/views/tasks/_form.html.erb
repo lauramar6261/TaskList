@@ -1,3 +1,4 @@
+<!-- form_for outdated -->
 <%= form_for @task do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
@@ -5,5 +6,6 @@
 <%= f.text_area :description %>
 <%= f.label :completion_date %>
 <%= f.date_field :completion_date %>
+# where is the update task in the submit button coming from?
 <%= f.submit %>
 <% end %>

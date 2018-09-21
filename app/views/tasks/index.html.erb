@@ -10,7 +10,7 @@
     <!-- cross over and add today's date if it is has a date-->
     <% if task.completion_date == nil %>
     <li><a href="/tasks/<%= task.id %>" name="<%= task.name%>"><%= task.name%></a></li>
-    <% else %> -->
+    <% else %>
     <li><strike><a href="/tasks/<%= task.id %>" name="<%= task.name%>"><%= task.name%></a></strike></li>
     <%end%>
 

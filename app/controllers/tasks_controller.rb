@@ -67,7 +67,11 @@ class TasksController < ApplicationController
   end
 
   def complete
-    task = Task.find_by(id: params[:id].to_i)
+    @task = Task.find_by(id: params[:id].to_i)
+    if @task.completion_date == nil
+      @task.completion_date = Date.today
+      @task.save # only save it if you modified something
+    end
     redirect_to root_path
   end
 end

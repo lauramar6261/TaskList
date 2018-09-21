@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   # use put to replace entire task, the form will use this path, but you have to tell it to use (action: :put) this http verb because the default for form is patch
   put '/tasks/:id', to: 'tasks#update'
 
+  #why does this need an alias?
   delete '/tasks/:id', to: 'tasks#destroy', as: 'destroy'
+
+  get '/task/:id', to: 'tasks#complete', as: 'complete'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

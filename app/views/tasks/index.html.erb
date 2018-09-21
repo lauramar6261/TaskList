@@ -11,7 +11,11 @@
     <!-- task variable here is defined in the loop above
     button makes a hidden form, and by default hidden forms have a post verd which it will be looking for that in the
     route file, to change the verb call the method key word to change the verb to get which is what we have in our route file -->
-    <p>Mark <%=task.completion_date%> | <%= button_to "Edit", edit_task_path(task.id), method: :get %> | <%= button_to "Delete", destroy_path(task.id), method: :delete, data: { confirm: "Are you sure?"}%> </p>
+    <p>Mark <%=task.completion_date%>
+      <%= button_to "Edit", edit_task_path(task.id), method: :get %>
+      <%= button_to "Delete", destroy_path(task.id), method: :delete, data: { confirm: "Are you sure?"}%>
+      <%= button_to "Mark Complete", complete_path(task.id), method: :get%>
+    </p>
     <% end %>
   </ol>
 </section>

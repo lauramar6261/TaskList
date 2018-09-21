@@ -65,4 +65,9 @@ class TasksController < ApplicationController
     task.destroy
     redirect_to root_path
   end
+
+  def complete
+    task = Task.find_by(id: params[:id].to_i)
+    redirect_to root_path
+  end
 end

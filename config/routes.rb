@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/tasks/all', to: 'tasks#all', as: 'all' # it's getting confused with show
+  get '/tasks/all', to: 'tasks#all', as: 'all' # it's getting confused with show so it needs to be up here - why?
   resources :tasks
   root "tasks#index"
   delete '/tasks/:id', to: 'tasks#destroy', as: 'destroy'

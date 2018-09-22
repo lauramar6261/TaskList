@@ -2,6 +2,10 @@
 <%else%> -->
   <h2><%= @task.name %></h2>
   <!-- # string concatination requires a string for the date, it needs to be displayed as a string at some point-->
+  <% if @task.completion_date == nil %>
+  <p> this task has not been completed </p>
+  <% else %>
   <p><%= "completion_date: " + @task.completion_date.strftime("%Y-%m-%d") %></p>
+  <%end%>
   <p><%= "description: " + @task.description %></p>
 <!-- <%end%> -->

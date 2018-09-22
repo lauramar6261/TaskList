@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/tasks/all', to: 'tasks#all', as: 'all' # it's getting confused with show so it needs to be up here - why?
+  get '/tasks/all', to: 'tasks#all', as: 'all' # QUESTION_FOR_LATER: it's getting confused with show so it needs to be up here - why?
   resources :tasks
   root "tasks#index"
   delete '/tasks/:id', to: 'tasks#destroy', as: 'destroy'
@@ -26,7 +26,7 @@ end
 #   # use put to replace entire task, the form will use this path, but you have to tell it to use (action: :put) this http verb because the default for form is patch
 #   put '/tasks/:id', to: 'tasks#update'
 #
-#   #- why does this need an alias? if not it will match to edit
+#   ## QUESTION_FOR_LATER: why it this matching to edit if I don't user alias
 #   delete '/tasks/:id', to: 'tasks#destroy', as: 'destroy'
 #
 #   get '/task/:id', to: 'tasks#complete', as: 'complete'

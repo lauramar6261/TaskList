@@ -74,4 +74,8 @@ class TasksController < ApplicationController
     end
     redirect_to root_path
   end
+
+  def all
+    @tasks = Task.all
+  end
 end

@@ -1,0 +1,10 @@
+<h2> ALL TASKS </h2>
+<% @tasks.each do |task| %>
+<p> <strong><%= task.name %></strong></p>
+<%= "completion_date: " + task.completion_date.strftime("%Y-%m-%d") %></p>
+<% if task.description == nil %>
+<%= "no description entered"%>
+<% else %>
+<p><%= "description: " + task.description %></p>
+<% end %>
+<%end%>

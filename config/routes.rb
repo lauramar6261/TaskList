@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "tasks#index" # this route is called root_path
+  get '/tasks/all', to: 'tasks#all', as: 'all'
 
   get '/tasks', to: 'tasks#index', as: 'tasks'
   # order matters new must be before id because :id will match any string, it is just a place holder

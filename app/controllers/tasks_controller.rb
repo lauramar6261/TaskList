@@ -27,7 +27,8 @@ class TasksController < ApplicationController
     # Task.new - the default HTTP verb is a post
     # how does it know which id it needs to save it to? .save it autogenerates an id
     # get variables that user inputed using params
-    @task = Task.new(name: params[:task][:name], completion_date: params[:task][:completion_date]) #instantiate a new task
+    # @task = Task.new(name: params[:task][:name], completion_date: params[:task][:completion_date]) #instantiate a new task
+    @task = Task.new(task_params) #task_params replaces info in the above line by calling the helper method below under private
     if @task.save # save returns true if the database insert succeeds #### creates an id
       redirect_to root_path # go to the index so we can see the task in the list
     else # save failed :(
@@ -77,5 +78,10 @@ class TasksController < ApplicationController
 
   def all
     @tasks = Task.all
+  end
+
+  private
+  def task_params
+    return params.require(:task).permit(:name, :completion_date)
   end
 end
